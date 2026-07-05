@@ -45,6 +45,8 @@ def geo_one_input_flow(page_name, label1, calculation, arg1, operation):
             get_operation = get_shape.area()
       elif operation == 'area2':
             get_operation = get_shape.area2()
+      elif operation == 'area3':
+            get_operation = get_shape.area3()
       elif operation == 'circumference':
             get_operation = get_shape.circumference()
       elif operation == 'circumference2':
@@ -55,9 +57,20 @@ def geo_one_input_flow(page_name, label1, calculation, arg1, operation):
             get_operation = get_shape.diameter2()
       elif operation == 'diameter3':
             get_operation = get_shape.diameter3()
-      
+      elif operation == 'tsa2':
+            get_operation = get_shape.tsa2()
+      elif operation == 'lsa2':
+            get_operation = get_shape.lsa2()
+      elif operation == 'base_area':
+            get_operation = get_shape.base_area()
+      elif operation == 'base_area2':
+            get_operation = get_shape.base_area2()
+      elif operation == 'volume':
+            get_operation = get_shape.volume()
+      elif operation == 'volume2':
+            get_operation = get_shape.volume2()
       print_divider()
-      print(f"Your answer is {get_operation}")
+      print(f"Your answer is {get_operation:.2f}")
       print_divider()
 
 def geo_two_inputs_flow(page_name, label1, label2, calculation, arg1, arg2, operation):
@@ -106,9 +119,42 @@ def geo_two_inputs_flow(page_name, label1, label2, calculation, arg1, arg2, oper
             get_operation = get_shape.angle_of_sector()
       elif operation == 'angle_of_sector2':
             get_operation = get_shape.angle_of_sector2()
-      
+      elif operation == 'angle4':
+            get_operation = get_shape.angle4()
+      elif operation == 'angle5':
+            get_operation = get_shape.angle5()
+      elif operation == 'angle6':
+            get_operation = get_shape.angle6()
+      elif operation == 'volume':
+            get_operation = get_shape.volume()
+      elif operation == 'volume2':
+            get_operation = get_shape.volume2()
+      elif operation == 'volume3':
+            get_operation = get_shape.volume3()
+      elif operation == 'volume4':
+            get_operation = get_shape.volume4()
+      elif operation == 'tsa':
+            get_operation = get_shape.tsa()
+      elif operation == 'tsa2':
+            get_operation = get_shape.tsa2()
+      elif operation == 'tsa3':
+            get_operation = get_shape.tsa3()
+      elif operation == 'tsa4':
+            get_operation = get_shape.tsa4()
+      elif operation == 'csa':
+            get_operation = get_shape.csa()
+      elif operation == 'csa2':
+            get_operation = get_shape.csa2()
+      elif operation == 'csa3':
+            get_operation = get_shape.csa3()
+      elif operation == 'csa4':
+            get_operation = get_shape.csa4()
+      elif operation == 'base_area3':
+            get_operation = get_shape.base_area3()
+      elif operation == 'slant_height':
+            get_operation = get_shape.slant_height()
       print_divider()
-      print(f"Your answer is {get_operation}")
+      print(f"Your answer is {get_operation:.2f}")
       print_divider()
 
 def geo_three_inputs_flow(page_name, label1, label2, label3, calculation, arg1, arg2, arg3, operation):
@@ -132,11 +178,35 @@ def geo_three_inputs_flow(page_name, label1, label2, label3, calculation, arg1, 
             get_operation = get_shape.angle2()
       elif operation == 'angle3':
             get_operation = get_shape.angle3()
+      elif operation == 'volume':
+            get_operation = get_shape.volume()
+      elif operation == 'tsa':
+            get_operation = get_shape.tsa()
+      elif operation == 'lsa':
+            get_operation = get_shape.lsa()
+      elif operation == 'space_diagonal':
+            get_operation = get_shape.space_diagonal()
       
       print_divider()
-      print(f"Your answer is {get_operation}")
+      print(f"Your answer is {get_operation:.2f}")
       print_divider()
 
+def geo_four_inputs_flow(page_name, label1, label2, label3, label4, calculation, arg1, arg2, arg3, arg4, operation):
+      """Control repetition and consistency for four user inputs in the geometry calculator."""
+      print(f"[Standard Calculator / 2D / {page_name}]\n")
+      num1 = float(input(f"Input the {label1}: "))
+      num2 = float(input(f"Input the {label2}: "))
+      num3 = float(input(f"Input the {label3}: "))
+      num4 = float(input(f"Input the {label4}: "))
+      arguments = {arg1: num1, arg2: num2, arg3: num3, arg4: num4}
+      get_shape = calculation(**arguments)
+      
+      if operation == 'tsa':
+            get_operation = get_shape.area()
+      
+      print_divider()
+      print(f"Your answer is {get_operation:.2f}")
+      print_divider()
 
 # STARTING POINT
 
@@ -345,14 +415,60 @@ elif calculator == '2':
                               else:
                                     print("Invalid! Please enter a number between 1 to 4.\n")
                                     
-                        
-                        # Dude, u forgot to do the Area for triangle
                         if operation == '1':
-                              pass
+                              print("[Geometry Calculator / 2D / Triangle / Right-angle]\n"
+                                          "\n"
+                                          "How would you like to calculate?\n"
+                                          "1 - Base and height\n"
+                                          "2 - a hypotenuse + leg side"
+                                          )
+                              while True:
+                                          approach = input("Enter your approach (1-2): ")
+                                          print_divider()
 
-                        # ...and Perimeter
+                                          if approach in ['1', '2']:
+                                                break
+                                          else:
+                                                print("Invalid! Please enter 1 or 2.\n")
+                              if approach == '1':
+                                    base = float(input('Enter length of Base: '))
+                                    height = float(input('Enter length of Height: '))
+                                    area = 0.5 * base * height
+                                    print(f'Area = {area:.2f}')
+                              elif approach == '2':
+                                    hyp = float(input('Enter length of Hyp: '))
+                                    side = float(input("Enter length of 'leg': "))
+                                    side2 = math.sqrt(pow(hyp, 2)- pow(side, 2))
+                                    area = 0.5 * side * side
+                                    print(f'Area = {area:.2f}')
+
                         elif operation == '2':
-                              pass
+                              print("[Geometry Calculator / 2D / Triangle / Right-angle]\n"
+                                          "\n"
+                                          "How would you like to calculate?\n"
+                                          "1 - Two 'leg' sides\n"
+                                          "2 - a hypotenuse + leg side"
+                                          )
+                              while True:
+                                          approach = input("Enter your approach (1-2): ")
+                                          print_divider()
+
+                                          if approach in ['1', '2']:
+                                                break
+                                          else:
+                                                print("Invalid! Please enter 1 or 2.\n")
+                              if approach == '1':
+                                    side = float(input("Enter length of leg 1: "))
+                                    side2 = float(input("Enter length of leg 2: "))
+                                    hyp = math.sqrt(pow(side, 2) + pow(side2, 2))
+                                    perimeter = side + side2 + hyp
+                                    print(f'Perimeter = {perimeter:.2f}')
+                              elif approach == '2':
+                                    side = float(input("Enter length of known leg: "))
+                                    hyp = float(input("Enter length of hyp: "))
+                                    side2 = math.sqrt(pow(hyp, 2) - pow(side, 2))
+                                    perimeter = side + side2 + hyp
+                                    print(f'Perimeter = {perimeter:.2f}') #Hi gang can you integrate this to your function
 
                         elif operation == '3':
                               print("[Geometry Calculator / 2D / Triangle / Right-angle / Side]\n"
@@ -442,44 +558,53 @@ elif calculator == '2':
 
                                     if inv_sides == '1' and known_side == '1':
                                           geo_two_inputs_flow("Triangle / Right-angle / Side / SOHCAHTOA Formula", "length of hypotenuse", "angle", calc.Triangle, "num1", "num2", "side_sct_opp")
-                                          # hyp = float(input("Enter length of hypotenuse: "))
-                                          # angle = float (input("Enter angle (in degrees): "))
-                                          # opp = math.sin(math.radians(angle)) * hyp
-                                          # print(f"Opposite length = {opp:.2f}")
                                     elif inv_sides == '1' and known_side == '2':
                                           geo_two_inputs_flow("Triangle / Right-angle / Side / SOHCAHTOA Formula", "length of opposite", "angle", calc.Triangle, "num1", "num2", "side_sct_hyp")
-                                          # opp = float(input("Enter length of opposite: "))
-                                          # angle = float (input("Enter angle (in degrees): "))
-                                          # hyp = opp / math.sin(math.radians(angle))
-                                          # print(f"Hypotenuse length = {hyp:.2f}")
                                     elif inv_sides == '2' and known_side == '1':
                                           geo_two_inputs_flow("Triangle / Right-angle / Side / SOHCAHTOA Formula", "length of hypotenuse", "angle", calc.Triangle, "num1", "num2", "side_sct_adj")
-                                          # hyp = float(input("Enter length of hypotenuse: "))
-                                          # angle = float (input("Enter angle (in degrees): "))
-                                          # adj = math.cos(math.radians(angle)) * hyp
-                                          # print(f"Adjacent length = {adj:.2f}")
                                     elif inv_sides == '2' and known_side == '3':
                                           geo_two_inputs_flow("Triangle / Right-angle / Side / SOHCAHTOA Formula", "length of adjacent", "angle", calc.Triangle, "num1", "num2", "side_sct_hyp2")
-                                          # adj = float(input("Enter length of adjacent: "))
-                                          # angle = float (input("Enter angle (in degrees): "))
-                                          # hyp = adj / math.cos(math.radians(angle))
-                                          # print(f"Hypotenuse length = {hyp:.2f}")
                                     elif inv_sides == '3' and known_side == '2':
                                           geo_two_inputs_flow("Triangle / Right-angle / Side / SOHCAHTOA Formula", "length of opposite", "angle", calc.Triangle, "num1", "num2", "side_sct_adj2")
-                                          # opp = float(input("Enter length of opposite: "))
-                                          # angle = float (input("Enter angle (in degrees): "))
-                                          # adj = opp / math.tan(math.radians(angle))
-                                          # print(f"Adjacent length = {adj:.2f}")
                                     elif inv_sides == '3' and known_side == '3':
                                           geo_two_inputs_flow("Triangle / Right-angle / Side / SOHCAHTOA Formula", "length of adjacent", "angle", calc.Triangle, "num1", "num2", "side_sct_opp2")
-                                          # adj = float(input("Enter length of adjacent: "))
-                                          # angle = float (input("Enter angle (in degrees): "))
-                                          # opp = math.tan(math.radians(angle)) * adj
-                                          # print(f"Opposite length = {opp:.2f}")
 
-                        # ...and Angle
                         elif operation == '4':
-                              pass
+                              print("[Geometry Calculator / 2D / Triangle / Right-angle / Angle]\n"
+                                          "\n"
+                                          "Which sides are involved?\n"
+                                          "\n"
+                                          "1 - Hypotenuse & Opposite (SOH)\n" 
+                                          "2 - Hypotenuse & Adjacent (CAH\n"
+                                          "3 - Opposite & Adjacent (TOA)\n"
+                                          ) 
+
+                              while True:
+                                    inv_sides = input("Choose involved sides (1-3): ")
+                                    print_divider()
+
+                                    if inv_sides in ['1', '2', '3']:
+                                          break
+                                    else:
+                                          print("Invalid! Please enter a number between 1 to 3.\n")
+                              if inv_sides == '1':
+                                    geo_two_inputs_flow("Triangle / Right-angle / Angle / SOH", "length of hypotenuse", "length of opposite", calc.Triangle, "num1", "num2", "angle4")
+                                    # hyp = float(input('Enter length of hypotenuse: '))
+                                    # opp = float(input('Enter length of opposite: '))
+                                    # angle = math.degrees(math.asin(opp/hyp))
+                                    # print(f'Angle = {angle:.2f} deg')
+                              elif inv_sides == '2':
+                                    geo_two_inputs_flow("Triangle / Right-angle / Angle / CAH", "length of hypotenuse", "length of adjacent", calc.Triangle, "num1", "num2", "angle5")
+                                    # hyp = float(input('Enter length of hypotenuse: '))
+                                    # adj = float(input('Enter length of adjacent: '))
+                                    # angle = math.degrees(math.acos(adj/hyp))
+                                    # print(f'Angle = {angle:.2f} deg')
+                              elif inv_sides == '3':
+                                    geo_two_inputs_flow("Triangle / Right-angle / Angle / TOA", "length of opposite", "length of adjacent", calc.Triangle, "num1", "num2", "angle6")
+                                    # opp = float(input('Enter length of opposite: '))
+                                    # adj = float(input('Enter length of adjacent: '))
+                                    # angle = math.degrees(math.atan(opp/adj))
+                                    # print(f'Angle = {angle:.2f} deg')
 
                   elif triangle == '2':
                         print("[Geometry Calculator / 2D / Triangle / General]\n"
@@ -553,7 +678,7 @@ elif calculator == '2':
                                     "\n"
                                     "State a calculation method\n"
                                     "\n"
-                                    "1 - 2 Angles\n"
+                                    "1 - Two Angles\n"
                                     "2 - Trigonometry (2 sides, 1 angle in between)\n"
                                     )
                               
@@ -740,7 +865,7 @@ elif calculator == '2':
                   elif operation == '6':
                         print("[Geometry Calculator / 2D / Circle / Angle of a Sector]\n"
                               "\n"
-                              "State a calculation method\n"
+                              "Select calculation approach\n"
                               "\n"
                               "1 - Radius & Area of sector\n"
                               "2 - Radius & Arc of sector\n"
@@ -757,16 +882,8 @@ elif calculator == '2':
 
                         if calc_method == '1':
                               geo_two_inputs_flow("Circle / Angle of a Sector", "radius", "area", calc.Circle, "num1", "num2", "angle_of_sector")
-                              # radius = float(input("Enter radius = "))
-                              # area = float(input("Enter area = "))
-                              # angle = (area * 360) / (math.pi * pow(radius, 2))
-                              # print(f"angle of sector = {angle} degrees")
                         elif calc_method == '2':
                               geo_two_inputs_flow("Circle / Angle of a Sector", "radius", "arc", calc.Circle, "num1", "num2", "angle_of_sector2")
-                              # radius = float(input("Enter radius = "))
-                              # arc = float(input("Enter arc = "))
-                              # angle = (arc * 360) / (2 * math.pi * radius)
-                              # print(f"angle of sector = {angle} degrees")
       
       elif geo_dimension == '2':
             print("[Geometry Calculator / 3D]\n"
@@ -809,13 +926,67 @@ elif calculator == '2':
                               print("Invalid! Please enter a number between 1 to 4.\n")
 
                   if operation == '1':
-                        pass
+                        print("[Geometry Calculator / 3D / Cuboid / Volume]\n"
+                              "\n"
+                              "Select calculation approach\n"
+                              "\n"
+                              "1 - Length & Width & Height\n"
+                              "2 - Face area & Height\n"
+                              )
+                        while True:
+                              approach = input("Choose an operation (1-2): ")
+                              print_divider()
+
+                              if approach in ['1', '2']:
+                                    break
+                              else:
+                                    print("Invalid! Please enter a number between 1 to 2.\n")
+                        if approach == '1':
+                              geo_three_inputs_flow("Cuboid / Volume", "Length", "width", "height", calc.Cuboid, "num1", "num2", "num3", "volume")
+                        elif approach == '2':
+                              geo_two_inputs_flow("Cuboid / Volume", "Face Area", "Height", calc.Cuboid, "num1", "num2", "volume2")
                   elif operation == '2':
-                        pass
-                  elif operation == '3':
-                        pass
+                        print("[Geometry Calculator / 3D / Cuboid / TSA]\n"
+                              "\n"
+                              "Select calculation approach\n"
+                              "\n"
+                              "1 - Length & Width & Height (cuboid)\n"
+                              "2 - (for cube) a length\n"
+                              )
+                        while True:
+                              approach = input("Choose an operation (1-2): ")
+                              print_divider()
+
+                              if approach in ['1', '2']:
+                                    break
+                              else:
+                                    print("Invalid! Please enter a number between 1 to 2.\n")
+                        if approach == '1':
+                              geo_three_inputs_flow("Cuboid / TSA", "Length", "Width", "Height", calc.Cuboid, "num1", "num2", "num3", "tsa")
+                        elif approach == '2':
+                              geo_one_input_flow("Cuboid / TSA", "Length", calc.Cuboid, "num1", "tsa2")
+                  elif operation == '3': #LSA
+                        print("[Geometry Calculator / 3D / Cuboid / LSA]\n"
+                              "\n"
+                              "Select calculation approach\n"
+                              "\n"
+                              "1 - Length & Width & Height (cuboid)\n"
+                              "2 - (for cube) a length\n"
+                              )
+                        while True:
+                              approach = input("Choose an operation (1-2): ")
+                              print_divider()
+
+                              if approach in ['1', '2']:
+                                    break
+                              else:
+                                    print("Invalid! Please enter a number between 1 to 2.\n")
+                        if approach == '1':
+                              geo_three_inputs_flow("Cuboid / LSA", "Length", "Width", "Height", calc.Cuboid, "num1", "num2", "num3", "lsa")
+                        elif approach == '2':
+                              geo_one_input_flow("Cuboid / LSA", "side Length", calc.Cuboid, "num1", "lsa2")
                   elif operation == '4':
-                        pass
+                        geo_three_inputs_flow("Cuboid / Space Diagonal", "Length", "Width", "Height", calc.Cuboid, "num1", "num2", "num3", "space_diagonal")
 
 
             # GEO 3D - Cone
@@ -826,26 +997,123 @@ elif calculator == '2':
                         "1 - Volume\n"
                         "2 - Total Surface Area (TSA)\n"
                         "3 - Curved Surface Area (CSA)\n"
-                        "4 - Slant Height\n"
+                        "4 - Base Area\n"
+                        "5 - Slant Height\n"
                         )
                   
                   while True:
-                        operation = input("Choose an operation (1-4): ")
+                        operation = input("Choose an operation (1-7): ")
                         print_divider()
 
-                        if operation in ['1', '2', '3', '4']:
+                        if operation in ['1', '2', '3', '4', '5', '6', '7']:
                               break
                         else:
-                              print("Invalid! Please enter a number between 1 to 4.\n")
+                              print("Invalid! Please enter a number between 1 to 7.\n")
 
                   if operation == '1':
-                        pass
+                        print("[Geometry Calculator / 3D / Cone / Volume]\n"
+                              "\n"
+                              "Select calculation approach\n"
+                              "\n"
+                              "1 - Radius & Height\n"
+                              "2 - Base Area & Height\n"
+                              "3 - Radius & Slant Height\n"
+                              "4 - Height & Slant Height\n"
+                              )
+                        while True:
+                              approach = input("Choose an operation (1-4): ")
+                              print_divider()
+
+                              if approach in ['1', '2', '3', '4']:
+                                    break
+                              else:
+                                    print("Invalid! Please enter a number between 1 to 4.\n")
+                        if approach == '1':
+                              geo_two_inputs_flow("Cone / Volume", "Radius", "Height", calc.Cone, "num1", "num2", "volume")
+                        elif approach == '2':
+                              geo_two_inputs_flow("Cone / Volume", "Height", "Base Area", calc.Cone, "num1", "num2", "volume2")
+                        elif approach == '3':
+                              geo_two_inputs_flow("Cone / Volume", "Radius", "Slant height", calc.Cone, "num1", "num2", "volume3")
+                        elif approach == '4':
+                              geo_two_inputs_flow("Cone / Volume", "Height", "Slant height", calc.Cone, "num1", "num2", "volume4")
+                                    
                   elif operation == '2':
-                        pass
+                        print("[Geometry Calculator / 3D / Cone / TSA]\n"
+                              "\n"
+                              "Select calculation approach\n"
+                              "\n"
+                              "1 - Radius & Slant height\n"
+                              "2 - Radius & Height\n"
+                              "3 - Base Area & Slant Height\n"
+                              "4 - Base Area & Height\n"
+                              )
+                        while True:
+                              approach = input("Choose an operation (1-4): ")
+                              print_divider()
+
+                              if approach in ['1', '2', '3', '4']:
+                                    break
+                              else:
+                                    print("Invalid! Please enter a number between 1 to 4.\n")
+                        if approach == '1':
+                              geo_two_inputs_flow("Cone / TSA", "Radius", "Slant Height", calc.Cone, "num1", "num2", "tsa")
+                        elif approach == '2':
+                              geo_two_inputs_flow("Cone / TSA", "Radius", "Height", calc.Cone, "num1", "num2", "tsa2")
+                        elif approach == '3':
+                              geo_two_inputs_flow("Cone / TSA", "Base Area", "Slant height", calc.Cone, "num1", "num2", "tsa3")
+                        elif approach == '4':
+                              geo_two_inputs_flow("Cone / TSA", "Base Area", "height", calc.Cone, "num1", "num2", "tsa4")
                   elif operation == '3':
-                        pass
+                        print("[Geometry Calculator / 3D / Cone / CSA]\n"
+                              "\n"
+                              "Select calculation approach\n"
+                              "\n"
+                              "1 - Radius & Slant height\n"
+                              "2 - Radius & Height\n"
+                              "3 - Base Area & Slant Height\n"
+                              "4 - Base Area & Height\n"
+                              )
+                        while True:
+                              approach = input("Choose an operation (1-4): ")
+                              print_divider()
+
+                              if approach in ['1', '2', '3', '4']:
+                                    break
+                              else:
+                                    print("Invalid! Please enter a number between 1 to 4.\n")
+                        if approach == '1':
+                              geo_two_inputs_flow("Cone / CSA", "Radius", " Slant Height", calc.Cone, "num1", "num2", "csa")
+                        elif approach == '2':
+                              geo_two_inputs_flow("Cone / CSA", "Radius", "Height", calc.Cone, "num1", "num2", "csa2")
+                        elif approach == '3':
+                              geo_two_inputs_flow("Cone / CSA", "Base Area", "Slant Height", calc.Cone, "num1", "num2", "csa3")
+                        elif approach == '4':
+                              geo_two_inputs_flow("Cone / CSA", "Base Area", "Height", calc.Cone, "num1", "num2", "csa4")
                   elif operation == '4':
-                        pass
+                        print("[Geometry Calculator / 3D / Cone / Base Area]\n"
+                              "\n"
+                              "Select calculation approach\n"
+                              "\n"
+                              "1 - Radius\n"
+                              "2 - Circumference\n"
+                              "3 - Height and slant height\n"
+                              )
+                        while True:
+                              approach = input("Choose an operation (1-3): ")
+                              print_divider()
+
+                              if approach in ['1', '2', '3',]:
+                                    break
+                              else:
+                                    print("Invalid! Please enter a number between 1 to 3.\n")
+                        if approach == '1':
+                              geo_one_input_flow("Cone / Base Area", "Radius", calc.Cone, "num1", "base_area")
+                        if approach == '2':
+                              geo_one_input_flow("Cone / Base Area", "Circumference", calc.Cone, "num1", "base_area2")
+                        if approach == '3':
+                              geo_two_inputs_flow("Cone / Base Area", "Height", "Slant Height", calc.Cone, "num1", "num2", "base_area3")
+                  elif operation == '5':
+                        geo_two_inputs_flow("Cone / Slant Height", "Radius", "Height", calc.Cone, "num1", "num2", "slant_height")
             
             
             # GEO 3D - Pyramid
@@ -853,29 +1121,57 @@ elif calculator == '2':
             if shape == '3':
                   print("[Geometry Calculator / 3D / Pyramid]\n"
                         "\n"
-                        "1 - Volume\n"
-                        "2 - Total Surface Area (TSA)\n"
-                        "3 - Lateral Surface Area (LSA)\n"
-                        "4 - Slant Height\n"
+                        "1 - Square/Rectangular Pyramid\n"
+                        "2 - Triangular Pyramid\n"
                         )
-                  
                   while True:
-                        operation = input("Choose an operation (1-4): ")
-                        print_divider()
+                              type = input("Choose pyramid type (1-2): ")
+                              print_divider()
 
-                        if operation in ['1', '2', '3', '4']:
-                              break
-                        else:
-                              print("Invalid! Please enter a number between 1 to 4.\n")
+                              if operation in ['1', '2']:
+                                    break
+                              else:
+                                    print("Invalid! Please enter a number between 1 to 2.\n")
+                  if type == '1':
+                        print("[Geometry Calculator / 3D / Pyramid / Square-Rectangular Pyramid]\n"
+                              "\n"
+                              "1 - Volume\n"
+                              "2 - Total Surface Area (TSA)\n"
+                              "3 - Lateral Surface Area (LSA)\n"
+                              "5 - Slant Height\n"
+                              )
+                        
+                        while True:
+                              operation = input("Choose an operation (1-4): ")
+                              print_divider()
 
-                  if operation == '1':
-                        pass
-                  elif operation == '2':
-                        pass
-                  elif operation == '3':
-                        pass
-                  elif operation == '4':
-                        pass
+                              if operation in ['1', '2', '3', '4']:
+                                    break
+                              else:
+                                    print("Invalid! Please enter a number between 1 to 4.\n")
+
+                        if operation == '1':
+                              print("[Geometry Calculator / 3D / Pyramid / Square-Rectangualar Pyramid / Volume]\n"
+                                    "\n"
+                                    "Select calculation approach\n"
+                                    "\n"
+                                    "1 - Base Area & Height\n"
+                                    "2 - Lenght & Width & Height "
+                                    )
+                              while True:
+                                    approach = input("Choose an operation (1-2): ")
+                                    print_divider()
+
+                                    if approach in ['1', '2']:
+                                          break
+                                    else:
+                                          print("Invalid! Please enter a number between 1 to 2.\n")
+                        elif operation == '2':
+                              pass
+                        elif operation == '3':
+                              pass
+                        elif operation == '4':
+                              pass
             
             
             # GEO 3D - Sphere
@@ -885,8 +1181,7 @@ elif calculator == '2':
                         "\n"
                         "1 - Volume\n"
                         "2 - Surface Area (SA)\n"
-                        "3 - Diameter\n"
-                        "4 - Circumference\n"
+                        "3 - Cross-Sectional: Area, Circumference, diameter\n"
                         )
                   
                   while True:
@@ -899,18 +1194,59 @@ elif calculator == '2':
                               print("Invalid! Please enter a number between 1 to 4.\n")
 
                   if operation == '1':
-                        pass
+                        print("[Geometry Calculator / 3D / Sphere / Volume]\n"
+                              "\n"
+                              "1 - radius\n"
+                              "2 - Circumference\n"
+                              )
+                        
+                        while True:
+                              approach = input("Choose an calculation approach (1-2): ")
+                              print_divider()
+
+                              if approach in ['1', '2']:
+                                    break
+                              else:
+                                    print("Invalid! Please enter a number between 1 to 2.\n")
+                        if approach == '1':
+                              geo_one_input_flow("Geometry Calculator / 3D / Sphere / Volume", "Radius", calc.Sphere, "num1", "volume")
+                        elif approach == '2':
+                              geo_one_input_flow("Geometry Calculator / 3D / Sphere / Volume", "Circumference", calc.Sphere, "num1", "volume2")
                   elif operation == '2':
-                        pass
+                        print("[Geometry Calculator / 3D / Sphere / Surface Area]\n"
+                              "\n"
+                              "1 - radius\n"
+                              "2 - Circumference\n"
+                              "3 - Volume\n"
+                              )
+                        
+                        while True:
+                              approach = input("Choose an calculation approach (1-3): ")
+                              print_divider()
+
+                              if approach in ['1', '2', '3']:
+                                    break
+                              else:
+                                    print("Invalid! Please enter a number between 1 to 3.\n")
+                        if approach == '1':
+                              geo_one_input_flow("Geometry Calculator / 3D / Sphere / Surface Area", "Radius", calc.Sphere, "num1", "area")
+                        elif approach == '2':
+                              geo_one_input_flow("Geometry Calculator / 3D / Sphere / Surface Area", "Circumference", calc.Sphere, "num1", "area2")
+                        elif approach == '3':
+                              geo_one_input_flow("Geometry Calculator / 3D / Sphere / Surface Area", "Volume", calc.Sphere, "num1", "area3")
                   elif operation == '3':
-                        pass
-                  elif operation == '4':
-                        pass
+                        radius = float('Input The Radius: ')
+                        diameter = radius * 2
+                        circumference = 2 * math.pi * radius
+                        area = math.pi * (radius**2)
+                        print(f'Diameter: {diameter}'
+                              f'Circumference: {circumference}'
+                              f'Cross-section Area: {area}')
             
             
             # GEO 3D - Cylinder
             
-            if shape == '2':
+            if shape == '5':
                   print("[Geometry Calculator / 3D / Cylinder]\n"
                         "\n"
                         "1 - Volume\n"
@@ -928,8 +1264,65 @@ elif calculator == '2':
                               print("Invalid! Please enter a number between 1 to 3.\n")
 
                   if operation == '1':
-                        pass
+                        print("[Geometry Calculator / 3D / Cylinder / Volume]\n"
+                              "\n"
+                              "1 - Radius & Height\n"
+                              "2 - Base Area & Height\n"
+                              "3 - Circumference & Height\n"
+                              )                      
+                        while True:
+                              approach = input("Choose an calculation approach (1-3): ")
+                              print_divider()
+
+                              if approach in ['1', '2', '3']:
+                                    break
+                              else:
+                                    print("Invalid! Please enter a number between 1 to 3.\n")
+                        if approach == '1':
+                              geo_two_inputs_flow("Cylinder / Volume", "Radius", "Height", calc.Cylinder, "num1", "num2", "volume")
+                        elif approach == '2':
+                              geo_two_inputs_flow("Cylinder / Volume", "Base Area", "Height", calc.Cylinder, "num1", "num2", "volume2")
+                        elif approach == '3':
+                              geo_two_inputs_flow("Cylinder / Volume", "Circumference", "Height", calc.Cylinder, "num1", "num2", "volume3")
                   elif operation == '2':
-                        pass
+                        print("[Geometry Calculator / 3D / Cylinder / TSA]\n"
+                              "\n"
+                              "1 - Radius & Height\n"
+                              "2 - Base Area & Height\n"
+                              "3 - Circumference & Height\n"
+                              )                      
+                        while True:
+                              approach = input("Choose an calculation approach (1-3): ")
+                              print_divider()
+
+                              if approach in ['1', '2', '3']:
+                                    break
+                              else:
+                                    print("Invalid! Please enter a number between 1 to 3.\n")
+                        if approach == '1':
+                              geo_two_inputs_flow("Cylinder / TSA", "Radius", "Height", calc.Cylinder, "num1", "num2", "tsa")
+                        elif approach == '2':
+                              geo_two_inputs_flow("Cylinder / TSA", "Base Area", "Height", calc.Cylinder, "num1", "num2", "tsa2")
+                        elif approach == '3':
+                              geo_two_inputs_flow("Cylinder / TSA", "Circumference", "Height", calc.Cylinder, "num1", "num2", "tsa3")
                   elif operation == '3':
-                        pass
+                        print("[Geometry Calculator / 3D / Cylinder / CSA]\n"
+                              "\n"
+                              "1 - Radius & Height\n"
+                              "2 - Base Area & Height\n"
+                              "3 - Circumference & Height\n"
+                              )                      
+                        while True:
+                              approach = input("Choose an calculation approach (1-3): ")
+                              print_divider()
+
+                              if approach in ['1', '2', '3']:
+                                    break
+                              else:
+                                    print("Invalid! Please enter a number between 1 to 3.\n")
+                        if approach == '1':
+                              geo_two_inputs_flow("Cylinder / CSA", "Radius", "Height", calc.Cylinder, "num1", "num2", "csa")
+                        elif approach == '2':
+                              geo_two_inputs_flow("Cylinder / CSA", "Base Area", "Height", calc.Cylinder, "num1", "num2", "csa2")
+                        elif approach == '3':
+                              geo_two_inputs_flow("Cylinder / CSA", "Circumference", "Height", calc.Cylinder, "num1", "num2", "csa3")
